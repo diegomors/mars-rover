@@ -24,7 +24,7 @@ A solution for Mars Rover problem.
     $ mvn exec:java -Dexec.mainClass=App -Dexec.args="C:\input.txt"
     ```
 
-## Project Archtype
+## Project Architecture
 
 ```
 {project}
