@@ -1,6 +1,5 @@
 import static org.junit.Assert.assertTrue;
 
-import java.io.FileNotFoundException;
 import java.util.Arrays;
 
 import org.junit.Test;
@@ -11,7 +10,6 @@ import entities.Plateau;
 import entities.Position;
 import entities.Rover;
 import exceptions.OutsideMovementException;
-import helpers.FileHelper;
 import helpers.ParserHelper;
 import services.RoverService;
 
@@ -109,21 +107,5 @@ public class AppTest {
         Rover rover = new Rover(plateau, position, movement);
 
         service.runScanning(rover);
-    }
-
-    @Test
-    public void shouldReadFileCorrectly() throws FileNotFoundException
-    {
-        String[] result = FileHelper.read("input.txt");
-
-        String[] expected = {"5 5", "1 2 N", "LMLMLMLMM", "3 3 E", "MMRMMRMRRM"};
-
-        assertTrue(result.equals(expected));
-    }
-
-    @Test(expected = OutsideMovementException.class)
-    public void shouldThrowFileNotFound() throws FileNotFoundException
-    {
-        FileHelper.read("notfound.txt");
     }
 }
