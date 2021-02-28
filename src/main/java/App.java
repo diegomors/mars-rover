@@ -14,10 +14,8 @@ import services.RoverService;
  */
 public class App
 {
-    public static void main(String[] args2)
+    public static void main(String[] args)
     {
-        String[] args = { "C:\\input.txt" };
-
         if (args.length > 0) {
             RoverService service = new RoverService();
 
