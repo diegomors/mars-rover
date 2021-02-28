@@ -3,13 +3,13 @@ package entities;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import entities.enums.MovementDirection;
+import entities.enums.MovementAction;
 
 public class Movement {
-    private List<MovementDirection> sequence;
+    private List<MovementAction> sequence;
     private int currentIndex;
 
-    public Movement(List<MovementDirection> sequence) {
+    public Movement(List<MovementAction> sequence) {
         this.sequence = sequence;
         this.currentIndex = -1;
     }
@@ -26,7 +26,7 @@ public class Movement {
         return false;
     }
 
-    public MovementDirection getCurrent() {
+    public MovementAction getCurrent() {
         return sequence.get(currentIndex);
     }
 

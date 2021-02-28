@@ -7,7 +7,7 @@ import entities.enums.CompassDirection;
 import entities.Movement;
 import entities.Plateau;
 import entities.Position;
-import entities.enums.MovementDirection;
+import entities.enums.MovementAction;
 
 public class ParserHelper {
     public static Plateau toPlateau(String input) throws IllegalArgumentException {
@@ -37,9 +37,9 @@ public class ParserHelper {
 
     public static Movement toMovement(String input) throws IllegalArgumentException {
         try {
-            List<MovementDirection> list = new ArrayList<MovementDirection>();
+            List<MovementAction> list = new ArrayList<MovementAction>();
             for (char c : input.toCharArray()) {
-                list.add(MovementDirection.fromString(String.valueOf(c)));
+                list.add(MovementAction.fromString(String.valueOf(c)));
             }
             return new Movement(list);
         } catch (Exception e) {

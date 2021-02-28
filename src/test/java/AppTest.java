@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.Test;
 
 import entities.enums.CompassDirection;
-import entities.enums.MovementDirection;
+import entities.enums.MovementAction;
 import entities.Movement;
 import entities.Plateau;
 import entities.Position;
@@ -59,9 +59,9 @@ public class AppTest {
     public void shouldConvertInputToValidMovement() {
         String input = "LMLMLMLMM";
 
-        List<MovementDirection> movs = new ArrayList<MovementDirection>(Arrays.asList(MovementDirection.LEFT,
-            MovementDirection.MOVE, MovementDirection.LEFT, MovementDirection.MOVE, MovementDirection.LEFT,
-            MovementDirection.MOVE, MovementDirection.LEFT, MovementDirection.MOVE, MovementDirection.MOVE));
+        List<MovementAction> movs = new ArrayList<MovementAction>(Arrays.asList(MovementAction.TURN_LEFT,
+            MovementAction.MOVE_FOWARD, MovementAction.TURN_LEFT, MovementAction.MOVE_FOWARD, MovementAction.TURN_LEFT,
+            MovementAction.MOVE_FOWARD, MovementAction.TURN_LEFT, MovementAction.MOVE_FOWARD, MovementAction.MOVE_FOWARD));
         Movement expected = new Movement(movs);
 
         Movement result = ParserHelper.toMovement(input);
@@ -77,14 +77,14 @@ public class AppTest {
     }
 
     @Test
-    public void shouldReturnCorrectFinalPosition() {
+    public void shouldReturnCorrectFinalPosition() throws OutsideMovementException {
         RoverService service = new RoverService();
 
         Plateau plateau1 = new Plateau(5, 5);
         Position position1 = new Position(1, 2, CompassDirection.NORTH);
-        List<MovementDirection> movs1 = new ArrayList<MovementDirection>(Arrays.asList(MovementDirection.LEFT,
-            MovementDirection.MOVE, MovementDirection.LEFT, MovementDirection.MOVE, MovementDirection.LEFT,
-            MovementDirection.MOVE, MovementDirection.LEFT, MovementDirection.MOVE, MovementDirection.MOVE));
+        List<MovementAction> movs1 = new ArrayList<MovementAction>(Arrays.asList(MovementAction.TURN_LEFT,
+            MovementAction.MOVE_FOWARD, MovementAction.TURN_LEFT, MovementAction.MOVE_FOWARD, MovementAction.TURN_LEFT,
+            MovementAction.MOVE_FOWARD, MovementAction.TURN_LEFT, MovementAction.MOVE_FOWARD, MovementAction.MOVE_FOWARD));
         Movement movement1 = new Movement(movs1);
         Rover rover1 = new Rover(plateau1, position1, movement1);
 
@@ -96,10 +96,10 @@ public class AppTest {
 
         Plateau plateau2 = new Plateau(5, 5);
         Position position2 = new Position(3, 3, CompassDirection.EAST);
-        List<MovementDirection> movs2 = new ArrayList<MovementDirection>(Arrays.asList(MovementDirection.MOVE,
-            MovementDirection.MOVE, MovementDirection.RIGHT, MovementDirection.MOVE, MovementDirection.MOVE,
-            MovementDirection.RIGHT, MovementDirection.MOVE, MovementDirection.RIGHT, MovementDirection.RIGHT,
-            MovementDirection.MOVE));
+        List<MovementAction> movs2 = new ArrayList<MovementAction>(Arrays.asList(MovementAction.MOVE_FOWARD,
+            MovementAction.MOVE_FOWARD, MovementAction.TURN_RIGHT, MovementAction.MOVE_FOWARD, MovementAction.MOVE_FOWARD,
+            MovementAction.TURN_RIGHT, MovementAction.MOVE_FOWARD, MovementAction.TURN_RIGHT, MovementAction.TURN_RIGHT,
+            MovementAction.MOVE_FOWARD));
         Movement movement2 = new Movement(movs2);
         Rover rover2 = new Rover(plateau2, position2, movement2);
 
@@ -111,14 +111,14 @@ public class AppTest {
     }
 
     @Test(expected = OutsideMovementException.class)
-    public void shouldInvalidateOutsideMovement() {
+    public void shouldInvalidateOutsideMovement() throws OutsideMovementException {
         RoverService service = new RoverService();
 
         Plateau plateau = new Plateau(5, 5);
         Position position = new Position(1, 2, CompassDirection.NORTH);
-        List<MovementDirection> movs = new ArrayList<MovementDirection>(Arrays.asList(MovementDirection.LEFT,
-            MovementDirection.MOVE, MovementDirection.MOVE, MovementDirection.MOVE, MovementDirection.LEFT,
-            MovementDirection.MOVE, MovementDirection.LEFT, MovementDirection.MOVE, MovementDirection.MOVE));
+        List<MovementAction> movs = new ArrayList<MovementAction>(Arrays.asList(MovementAction.TURN_LEFT,
+            MovementAction.MOVE_FOWARD, MovementAction.MOVE_FOWARD, MovementAction.MOVE_FOWARD, MovementAction.TURN_LEFT,
+            MovementAction.MOVE_FOWARD, MovementAction.TURN_LEFT, MovementAction.MOVE_FOWARD, MovementAction.MOVE_FOWARD));
         Movement movement = new Movement(movs);
         Rover rover = new Rover(plateau, position, movement);
 
