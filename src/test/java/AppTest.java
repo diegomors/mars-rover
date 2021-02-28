@@ -1,10 +1,13 @@
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Test;
 
-import entities.CompassDirection;
+import entities.enums.CompassDirection;
+import entities.enums.MovementDirection;
 import entities.Movement;
 import entities.Plateau;
 import entities.Position;
@@ -15,7 +18,6 @@ import services.RoverService;
 
 /**
  * Unit test for Mars Rover
- *
  * @author diegomors
  */
 public class AppTest {
@@ -56,7 +58,11 @@ public class AppTest {
     @Test
     public void shouldConvertInputToValidMovement() {
         String input = "LMLMLMLMM";
-        Movement expected = new Movement(Arrays.asList("LMLMLMLMM"));
+
+        List<MovementDirection> movs = new ArrayList<MovementDirection>(Arrays.asList(MovementDirection.LEFT,
+            MovementDirection.MOVE, MovementDirection.LEFT, MovementDirection.MOVE, MovementDirection.LEFT,
+            MovementDirection.MOVE, MovementDirection.LEFT, MovementDirection.MOVE, MovementDirection.MOVE));
+        Movement expected = new Movement(movs);
 
         Movement result = ParserHelper.toMovement(input);
 
@@ -76,7 +82,10 @@ public class AppTest {
 
         Plateau plateau1 = new Plateau(5, 5);
         Position position1 = new Position(1, 2, CompassDirection.NORTH);
-        Movement movement1 = new Movement(Arrays.asList("LMLMLMLMM"));
+        List<MovementDirection> movs1 = new ArrayList<MovementDirection>(Arrays.asList(MovementDirection.LEFT,
+            MovementDirection.MOVE, MovementDirection.LEFT, MovementDirection.MOVE, MovementDirection.LEFT,
+            MovementDirection.MOVE, MovementDirection.LEFT, MovementDirection.MOVE, MovementDirection.MOVE));
+        Movement movement1 = new Movement(movs1);
         Rover rover1 = new Rover(plateau1, position1, movement1);
 
         Position expected1 = new Position(1, 3, CompassDirection.NORTH);
@@ -87,7 +96,11 @@ public class AppTest {
 
         Plateau plateau2 = new Plateau(5, 5);
         Position position2 = new Position(3, 3, CompassDirection.EAST);
-        Movement movement2 = new Movement(Arrays.asList("MMRMMRMRRM"));
+        List<MovementDirection> movs2 = new ArrayList<MovementDirection>(Arrays.asList(MovementDirection.MOVE,
+            MovementDirection.MOVE, MovementDirection.RIGHT, MovementDirection.MOVE, MovementDirection.MOVE,
+            MovementDirection.RIGHT, MovementDirection.MOVE, MovementDirection.RIGHT, MovementDirection.RIGHT,
+            MovementDirection.MOVE));
+        Movement movement2 = new Movement(movs2);
         Rover rover2 = new Rover(plateau2, position2, movement2);
 
         Position expected2 = new Position(5, 1, CompassDirection.EAST);
@@ -103,7 +116,10 @@ public class AppTest {
 
         Plateau plateau = new Plateau(5, 5);
         Position position = new Position(1, 2, CompassDirection.NORTH);
-        Movement movement = new Movement(Arrays.asList("LMMLMLMLMM"));
+        List<MovementDirection> movs = new ArrayList<MovementDirection>(Arrays.asList(MovementDirection.LEFT,
+            MovementDirection.MOVE, MovementDirection.MOVE, MovementDirection.MOVE, MovementDirection.LEFT,
+            MovementDirection.MOVE, MovementDirection.LEFT, MovementDirection.MOVE, MovementDirection.MOVE));
+        Movement movement = new Movement(movs);
         Rover rover = new Rover(plateau, position, movement);
 
         service.runScanning(rover);

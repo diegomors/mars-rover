@@ -1,5 +1,7 @@
 package entities;
 
+import entities.enums.CompassDirection;
+
 public class Position {
     private int x;
     private int y;
