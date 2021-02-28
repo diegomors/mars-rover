@@ -2,7 +2,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.FileNotFoundException;
 import java.util.Arrays;
-import java.util.List;
 
 import org.junit.Test;
 

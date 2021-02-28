@@ -26,4 +26,21 @@ public class Rover {
     public Movement getMovement() {
         return movement;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s\n%s\n%s",
+            this.getPlateau().toString(),
+            this.getPosition().toString(),
+            this.getMovement().toString());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o.getClass() == Rover.class && ((Rover) o).toString().equals(this.toString())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -16,4 +16,18 @@ public class Plateau {
     public int getMaxY() {
         return maxY;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%d %d", maxX, maxY);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o.getClass() == Plateau.class && o.toString().equals(this.toString())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

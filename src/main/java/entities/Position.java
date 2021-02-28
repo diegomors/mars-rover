@@ -27,4 +27,13 @@ public class Position {
     public String toString() {
         return String.format("%d %d %s", x, y, direction.toString());
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o.getClass() == Position.class && o.toString().equals(this.toString())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
