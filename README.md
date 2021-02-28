@@ -18,11 +18,13 @@ A solution for Mars Rover problem.
     ```
     $ mvn test
     ```
+    ![](https://github.com/diegomors/mars-rover/blob/master/images/tests.gif)
 
 - Run with args
     ```
     $ mvn exec:java -Dexec.mainClass=App -Dexec.args="C:\input.txt"
     ```
+    ![](https://github.com/diegomors/mars-rover/blob/master/images/run.gif)
 
 ## Project Architecture
 
