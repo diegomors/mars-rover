@@ -33,6 +33,8 @@ A solution for Mars Rover problem.
 ├── src\main\java
 |   ├── entities
 |   |   ├── {Class}.java
+|   ├── exceptions
+|   |   ├── {Class}.java
 |   ├── helpers
 |   |   ├── {Class}.java
 |   ├── services
@@ -43,7 +45,9 @@ A solution for Mars Rover problem.
 └── pom.xml
 ```
 
-**Entities**: POJO classes to represent data model.
+**Entities**: POJO classes and enums to represent data model.
+
+**Exceptions**: Custom exceptions to represent business problem.
 
 **Helpers**: Auxiliary classes to read file and input convert.
 
