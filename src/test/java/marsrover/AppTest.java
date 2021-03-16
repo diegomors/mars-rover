@@ -19,6 +19,7 @@ import marsrover.entities.Movement;
 import marsrover.entities.Plateau;
 import marsrover.entities.Position;
 import marsrover.entities.Rover;
+import marsrover.entities.RoverStarter;
 import marsrover.entities.enums.CompassDirection;
 import marsrover.entities.enums.MovementAction;
 import marsrover.exceptions.OutsideMovementException;
@@ -44,7 +45,7 @@ public class AppTest {
                         MovementAction.MOVE_FOWARD, MovementAction.TURN_LEFT, MovementAction.MOVE_FOWARD,
                         MovementAction.TURN_LEFT, MovementAction.MOVE_FOWARD, MovementAction.MOVE_FOWARD));
         Movement movement = new Movement(movs);
-        Rover rover = new Rover(plateau, position, movement);
+        Rover rover = new RoverStarter(plateau, position, movement);
 
         return rover;
     }
@@ -57,7 +58,7 @@ public class AppTest {
                 MovementAction.MOVE_FOWARD, MovementAction.TURN_RIGHT, MovementAction.MOVE_FOWARD,
                 MovementAction.TURN_RIGHT, MovementAction.TURN_RIGHT, MovementAction.MOVE_FOWARD));
         Movement movement = new Movement(movs);
-        Rover rover = new Rover(plateau, position, movement);
+        Rover rover = new RoverStarter(plateau, position, movement);
 
         return rover;
     }
@@ -70,7 +71,7 @@ public class AppTest {
                         MovementAction.MOVE_FOWARD, MovementAction.TURN_LEFT, MovementAction.MOVE_FOWARD,
                         MovementAction.TURN_LEFT, MovementAction.MOVE_FOWARD, MovementAction.MOVE_FOWARD));
         Movement movement = new Movement(movs);
-        Rover rover = new Rover(plateau, position, movement);
+        Rover rover = new RoverStarter(plateau, position, movement);
 
         return rover;
     }

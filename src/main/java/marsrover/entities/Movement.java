@@ -1,7 +1,6 @@
 package marsrover.entities;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import marsrover.entities.enums.MovementAction;
 
@@ -14,29 +13,27 @@ public class Movement {
         this.currentIndex = -1;
     }
 
-    private boolean hasNext() {
-        return currentIndex < sequence.size() - 1;
-    }
-
-    public boolean moveToNext() {
-        if (hasNext()) {
-            currentIndex++;
+    public boolean hasNextAction(boolean change) {
+        if (currentIndex < sequence.size() - 1) {
+            if (change) currentIndex += 1;
             return true;
         }
         return false;
     }
 
-    public MovementAction getCurrent() {
+    public MovementAction getCurrentAction() {
         return sequence.get(currentIndex);
     }
 
     @Override
     public String toString() {
-        String result = this.sequence.stream()
-            .map(n -> n.toString())
-            .collect(Collectors.joining());
-
-        return result;
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < this.sequence.size(); i++) {
+            result.append(this.currentIndex == i ?
+                String.format("[%s]", this.sequence.get(i).toString())
+                : this.sequence.get(i));
+        }
+        return result.toString();
     }
 
     @Override
